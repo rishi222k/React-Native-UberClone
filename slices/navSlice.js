@@ -23,6 +23,8 @@ export const navSlice = createSlice({
 })
 
 export const { setOrigin, setDestination, setTravelTimeInformation} = navSlice.actions
+
+//Selectors: To grab information from the datalayer
 export const selectOrigin =(state) => state.nav.origin;
 export const selectDestination =(state) => state.nav.destination;
 export const selectTravelTimeInformation =(state) => state.nav.travelTimeInformation;

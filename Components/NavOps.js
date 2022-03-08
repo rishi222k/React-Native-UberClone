@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Image, FlatList,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList,TouchableOpacity,ImageBackground} from 'react-native'
 import {useFonts,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,
 } from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
+import { Icon } from 'react-native-elements';
 import React from 'react'
 
 const NavOps = () => {
@@ -52,6 +53,25 @@ const NavOps = () => {
   ];
   return (
     <View>
+    <View style={styles.card}>
+    <View style={{width:'60%',backgroundColor:'#5600FF',padding:20,borderBottomLeftRadius:10,borderTopLeftRadius:10}}>
+      <Text style={{fontSize:20,fontFamily:'Inter_700Bold',marginBottom:10,color:'#DFFF78'}}>Explore New Features</Text>
+      <View style={{display:'flex',flexDirection:'row', alignItems:'center'}}>
+      <Text style={{fontSize:17,fontFamily:'Inter_600SemiBold',marginRight:5,color:'#B38DFF'}}>Get Started</Text>
+      <Icon
+          name='md-arrow-forward-circle-sharp'
+          type='ionicon'
+          color='#B38DFF'
+        />
+      </View>
+    </View>
+    <View style={{width:'40%'}}>
+    <Image 
+    style={styles.bgimg}
+    resizeMode='cover'
+    source={require('../Images/Feature-Bg.jpg')} />
+    </View>
+    </View>
     <FlatList
       data={data1}
       contentContainerStyle={styles.listView}
@@ -96,6 +116,20 @@ const styles = StyleSheet.create({
   text:{
     fontSize:17,
     fontFamily: 'Inter_600SemiBold'
+  },
+  bgimg:{
+    width:'100%',
+    height:'100%',
+    borderBottomRightRadius:10,
+    borderTopRightRadius:10
+  }
+  ,
+  card:{
+    display:'flex',
+    flexDirection:'row',
+    width:'100%',
+    height:130,
+    marginBottom:15,
   },
   conta:{
     backgroundColor:'#ECECEC',

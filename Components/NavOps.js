@@ -1,7 +1,21 @@
 import { StyleSheet, Text, View, Image, FlatList,TouchableOpacity } from 'react-native'
+import {useFonts,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,
+} from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading';
 import React from 'react'
 
 const NavOps = () => {
+  let [fontsLoaded] = useFonts({
+    Inter_300Light,
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   const data1 =[
     {
       id:"123",
@@ -11,8 +25,8 @@ const NavOps = () => {
     },
     {
       id:"456",
-      title:"Food",
-      image: require('../Images/food.png'),
+      title:"Package",
+      image: require('../Images/Package.png'),
       screen: "Food Screen",
     },
   ];
@@ -31,8 +45,8 @@ const NavOps = () => {
     },
     {
       id:"789",
-      title:"Package",
-      image: require('../Images/Package.png'),
+      title:"Delivery",
+      image: require('../Images/Delivery.png'),
       screen: "Map Screen",
     },
   ];
@@ -40,16 +54,34 @@ const NavOps = () => {
     <View>
     <FlatList
       data={data1}
+      contentContainerStyle={styles.listView}
       horizontal
       keyExtractor={(item)=> item.id}
       renderItem={({item})=>(
         <TouchableOpacity>
-          <View style={{width:150}}>
+          <View style={styles.conta}>
             <Image
-            style={{width:110,height:80,resizeMode:'contain'}} 
+            style={{width:70,height:45,resizeMode:'contain',marginLeft:70}} 
             source={item.image}
             />
-            <Text style={{fontSize:16, fontWeight: '600'}}>{item.title}</Text>
+            <Text style={styles.text}>{item.title}</Text>
+          </View>
+        </TouchableOpacity>
+      )}
+    />
+    <FlatList
+      data={data2}
+      contentContainerStyle={styles.listView}
+      horizontal
+      keyExtractor={(item)=> item.id}
+      renderItem={({item})=>(
+        <TouchableOpacity>
+          <View style={styles.contb}>
+            <Image
+            style={{width:60,height:50,resizeMode:'contain'}} 
+            source={item.image}
+            />
+            <Text style={{fontSize:15,fontFamily: 'Inter_600SemiBold'}}>{item.title}</Text>
           </View>
         </TouchableOpacity>
       )}
@@ -61,5 +93,31 @@ const NavOps = () => {
 export default NavOps
 
 const styles = StyleSheet.create({
+  text:{
+    fontSize:17,
+    fontFamily: 'Inter_600SemiBold'
+  },
+  conta:{
+    backgroundColor:'#ECECEC',
+    paddingHorizontal:15,
+    paddingVertical:12,
+    borderRadius:10,
+    width:'100%'
+  },
+  contb:{
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor:'#ECECEC',
+    paddingVertical:15,
+    paddingHorizontal:25,
+    borderRadius:10,
+    marginTop:12
+  },
+  listView:{
+    flex:1,
+    justifyContent:'space-between',
+  }
   
 })

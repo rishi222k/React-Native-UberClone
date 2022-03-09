@@ -4,8 +4,12 @@ import {useFonts,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBo
 import AppLoading from 'expo-app-loading';
 import { Icon } from 'react-native-elements';
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 const NavOps = () => {
+
+  const navigation= useNavigation();
+
   let [fontsLoaded] = useFonts({
     Inter_300Light,
     Inter_400Regular,
@@ -22,13 +26,13 @@ const NavOps = () => {
       id:"123",
       title:"Ride",
       image: require('../Images/Primarycar.png'),
-      screen: "Map Screen",
+      screen: "MapScreen",
     },
     {
       id:"456",
       title:"Package",
       image: require('../Images/Package.png'),
-      screen: "Food Screen",
+      screen: "FoodScreen",
     },
   ];
   const data2 =[
@@ -36,19 +40,19 @@ const NavOps = () => {
       id:"345",
       title:"Premium",
       image: require('../Images/Audi.png'),
-      screen: "Map Screen",
+      screen: "MapScreen",
     },
     {
       id:"567",
       title:"Transit",
       image: require('../Images/Transit.png'),
-      screen: "Map Screen",
+      screen: "MapScreen",
     },
     {
       id:"789",
       title:"Delivery",
       image: require('../Images/Delivery.png'),
-      screen: "Map Screen",
+      screen: "MapScreen",
     },
   ];
   return (
@@ -72,13 +76,14 @@ const NavOps = () => {
     source={require('../Images/Feature-Bg.jpg')} />
     </View>
     </View>
+
     <FlatList
       data={data1}
       contentContainerStyle={styles.listView}
       horizontal
       keyExtractor={(item)=> item.id}
       renderItem={({item})=>(
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate(item.screen)}>
           <View style={styles.conta}>
             <Image
             style={{width:70,height:45,resizeMode:'contain',marginLeft:70}} 
@@ -89,6 +94,7 @@ const NavOps = () => {
         </TouchableOpacity>
       )}
     />
+
     <FlatList
       data={data2}
       contentContainerStyle={styles.listView}

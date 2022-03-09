@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, Image} from 'react-native'
+import { StyleSheet, Text, View, Image,SafeAreaView,Platform,StatusBar} from 'react-native'
 import React from 'react'
 import NavOps from '../Components/NavOps'
 
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
     <View style={styles.header}>
     <Image 
     style={styles.img} 
@@ -15,9 +15,8 @@ const HomeScreen = () => {
     source={require('../Images/Profileicon.png')}
     />
     </View>
-    
     <NavOps/>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -26,7 +25,9 @@ export default HomeScreen
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        paddingHorizontal:'6%'
+        height:'100%',
+        paddingHorizontal:'6%',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     img: {
         height:100,

@@ -6,6 +6,7 @@ import NavOps from '../Components/NavOps'
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
+    <View style={{paddingHorizontal:'6%',}}>
     <View style={styles.header}>
     <Image 
     style={styles.img} 
@@ -16,6 +17,7 @@ const HomeScreen = () => {
     />
     </View>
     <NavOps/>
+    </View>
     </SafeAreaView>
   )
 }
@@ -26,7 +28,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
         height:'100%',
-        paddingHorizontal:'6%',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     img: {

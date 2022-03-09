@@ -1,14 +1,19 @@
 import { StyleSheet, Text, View, Image, FlatList,TouchableOpacity,ImageBackground} from 'react-native'
 import {useFonts,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,
 } from '@expo-google-fonts/inter';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import{GOOGLE_MAPS_APIKEY} from "@env"
 import AppLoading from 'expo-app-loading';
 import { Icon } from 'react-native-elements';
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setDestination, setOrigin } from '../slices/navSlice';
 
 const NavOps = () => {
 
   const navigation= useNavigation();
+  const dispatch=useDispatch();
 
   let [fontsLoaded] = useFonts({
     Inter_300Light,
@@ -76,6 +81,46 @@ const NavOps = () => {
     source={require('../Images/Feature-Bg.jpg')} />
     </View>
     </View>
+
+    <GooglePlacesAutocomplete
+    placeholder="Enter your Location"
+      nearbyPlacesAPI="GooglePlacesSearch"
+      debounce={400}
+      styles={{
+        container:{
+          flex:0,
+          marginBottom:20,
+          marginTop:10,
+        },
+        textInput:{
+          fontSize:17,
+          fontFamily:'Inter_600SemiBold',
+          height: 50,
+          paddingHorizontal: 15,
+          paddingVertical: 15,
+          backgroundColor:'#fff',
+          borderColor:'gray',
+          borderWidth: 1.5,
+          borderRadius: 5,
+        }
+      }}
+      minLength={2}
+      enablePoweredByContainer={false}
+      returnKeyType={"search"}
+      onPress={(data,details = null)=> {
+        dispatch (setOrigin({
+          location:details.geometry.location,
+          description:data.description,
+        })
+        );
+
+        dispatch(setDestination(null));
+      }}
+      fetchDetails={true}
+      query={{
+        key:GOOGLE_MAPS_APIKEY,
+        language:'en'}}
+    />
 
     <FlatList
       data={data1}

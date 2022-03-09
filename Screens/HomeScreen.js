@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image,SafeAreaView,Platform,StatusBar} from 'react-native'
+import { StyleSheet, Text, View, Image,SafeAreaView,Platform,StatusBar,ScrollView} from 'react-native'
 import React from 'react'
 import NavOps from '../Components/NavOps'
 
@@ -16,7 +16,9 @@ const HomeScreen = () => {
     source={require('../Images/Profileicon.png')}
     />
     </View>
+    
     <NavOps/>
+    
     </View>
     </SafeAreaView>
   )
@@ -41,6 +43,6 @@ const styles = StyleSheet.create({
       flexDirection:'row', 
       alignItems:'center',
       justifyContent:'space-between',
-      marginBottom:15,
+      marginBottom:5,
     }
 })

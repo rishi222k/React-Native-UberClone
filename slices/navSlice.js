@@ -7,9 +7,9 @@ const initialState = {
 }
 
 export const navSlice = createSlice({
-    name: 'nav',
+    name: "nav",
     initialState,
-    reducer: {
+    reducers: {
         setOrigin: (state,action) =>{
             state.origin = action.payload;
         },
@@ -19,10 +19,10 @@ export const navSlice = createSlice({
         setTravelTimeInformation: (state,action) =>{
             state.travelTimeInformation = action.payload;
         },
-    }
-})
+    },
+});
 
-export const { setOrigin, setDestination, setTravelTimeInformation} = navSlice.actions
+export const { setOrigin, setDestination, setTravelTimeInformation} = navSlice.actions;
 
 //Selectors: To grab information from the datalayer
 export const selectOrigin =(state) => state.nav.origin;

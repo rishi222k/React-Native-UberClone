@@ -7,13 +7,14 @@ import AppLoading from 'expo-app-loading';
 import { Icon } from 'react-native-elements';
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { setDestination, setOrigin } from '../slices/navSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectOrigin, setDestination, setOrigin } from '../slices/navSlice';
 
 const NavOps = () => {
 
   const navigation= useNavigation();
   const dispatch=useDispatch();
+  const origin=useSelector(selectOrigin);
 
   let [fontsLoaded] = useFonts({
     Inter_300Light,
@@ -83,7 +84,7 @@ const NavOps = () => {
     </View>
 
     <GooglePlacesAutocomplete
-    placeholder="Enter your Location"
+    placeholder="Enter your current location"
       nearbyPlacesAPI="GooglePlacesSearch"
       debounce={400}
       styles={{
@@ -128,8 +129,10 @@ const NavOps = () => {
       horizontal
       keyExtractor={(item)=> item.id}
       renderItem={({item})=>(
-        <TouchableOpacity onPress={()=>navigation.navigate(item.screen)}>
-          <View style={styles.conta}>
+        <TouchableOpacity 
+        onPress={()=>navigation.navigate(item.screen)}
+        disabled={!origin}>
+          <View style={[styles.conta,]}>
             <Image
             style={{width:70,height:45,resizeMode:'contain',marginLeft:70}} 
             source={item.image}
@@ -146,8 +149,10 @@ const NavOps = () => {
       horizontal
       keyExtractor={(item)=> item.id}
       renderItem={({item})=>(
-        <TouchableOpacity>
-          <View style={styles.contb}>
+        <TouchableOpacity
+        disabled={!origin}
+        onPress={()=>navigation.navigate(item.screen)}>
+          <View style={[styles.contb,]}>
             <Image
             style={{width:60,height:50,resizeMode:'contain'}} 
             source={item.image}

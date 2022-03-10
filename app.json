@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Uber-Clone",
-    "slug": "Uber-Clone",
+    "name": "UberClone App",
+    "slug": "uber-clone-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/uber.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View,SafeAreaView,KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView,KeyboardAvoidingView, TouchableOpacity } from 'react-native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import{GOOGLE_MAPS_APIKEY} from "@env"
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react'
 import { setDestination } from '../slices/navSlice';
+import AppLoading from 'expo-app-loading';
+import { Icon } from 'react-native-elements';
+import NavFavs from './NavFavs';
 
 const NavCard = () => {
 
@@ -37,6 +40,33 @@ const NavCard = () => {
         navigation.navigate('RideOptions')
       }}
     />
+    <NavFavs/>
+    <View style={{flexDirection:'row',width:"100%",justifyContent:'space-around'}}>
+      {/* Uber-Rides */}
+      <TouchableOpacity style={{flexDirection:'row',alignItems:'center',justifyContent:'center',backgroundColor:'black',width:150, borderRadius:80}}
+      onPress={()=> navigation.navigate("RideOptions")}>
+      <Icon 
+        name='car-side'
+          type='font-awesome-5'
+          color='white'
+          size={23}
+          style={{marginRight:20}}
+      />
+      <Text style={{color:'white'}}>Rides</Text>
+
+      {/* Uber-Eats */}
+      </TouchableOpacity>
+      <TouchableOpacity style={{flexDirection:'row',alignItems:'center',justifyContent:'center',borderColor:'black',borderWidth:2,paddingHorizontal:15,paddingVertical:8,width:150, borderRadius:80}}>
+      <Icon 
+        name='md-fast-food'
+          type='ionicon'
+          color='black'
+          size={23}
+          style={{marginRight:20}}
+      />
+      <Text style={{color:'black'}}>Eats</Text>
+      </TouchableOpacity>
+    </View>
     </View>
     </SafeAreaView>
   )
@@ -47,7 +77,6 @@ export default NavCard
 const Mapstyles= StyleSheet.create({
   container:{
     flex:0,
-    marginBottom:20,
     marginTop:10,
   },
   textInput:{

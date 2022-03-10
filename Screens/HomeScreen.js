@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Image,SafeAreaView,Platform,StatusBar,ScrollView} from 'react-native'
+import { StyleSheet, Text, View, Image,SafeAreaView,Platform,StatusBar,ScrollView, FlatList} from 'react-native'
 import React from 'react'
 import NavOps from '../Components/NavOps'
+import NavFavs from '../Components/NavFavs'
 
 
 const HomeScreen = () => {
@@ -18,7 +19,7 @@ const HomeScreen = () => {
     </View>
     
     <NavOps/>
-    
+    <NavFavs/>
     </View>
     </SafeAreaView>
   )

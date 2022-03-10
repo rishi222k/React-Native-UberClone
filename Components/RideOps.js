@@ -69,7 +69,7 @@ const RideOps = () => {
           />
           <View>
           <Text style={{fontSize:20,fontFamily:'Inter_600SemiBold'}}>{title}</Text>
-          <Text style={{marginTop:4}}>{travelTimeInformation?.duration?.text} travel time</Text>
+          <Text style={{marginTop:4}}>{travelTimeInformation?.duration?.text}</Text>
           </View>
           <Text style={{fontSize:20,fontFamily:'Inter_500Medium'}}>
 

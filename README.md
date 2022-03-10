@@ -1,7 +1,8 @@
 # React-Native-UberClone
 
 
-Expo Go Link(open this link on your device): 
+Expo Go Link(iOS & Android): 
+
 exp://exp.host/@rishiraghu/uber-clone-app?release-channel=default
 
 

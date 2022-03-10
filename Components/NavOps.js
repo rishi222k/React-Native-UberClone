@@ -87,24 +87,7 @@ const NavOps = () => {
     placeholder="Enter your current location"
       nearbyPlacesAPI="GooglePlacesSearch"
       debounce={400}
-      styles={{
-        container:{
-          flex:0,
-          marginBottom:20,
-          marginTop:10,
-        },
-        textInput:{
-          fontSize:17,
-          fontFamily:'Inter_600SemiBold',
-          height: 50,
-          paddingHorizontal: 15,
-          paddingVertical: 15,
-          backgroundColor:'#fff',
-          borderColor:'gray',
-          borderWidth: 1.5,
-          borderRadius: 5,
-        }
-      }}
+      styles={Mapstyles}
       minLength={2}
       enablePoweredByContainer={false}
       returnKeyType={"search"}
@@ -168,7 +151,26 @@ const NavOps = () => {
 
 export default NavOps
 
+const Mapstyles= StyleSheet.create({
+  container:{
+    flex:0,
+    marginBottom:20,
+    marginTop:10,
+  },
+  textInput:{
+    fontSize:17,
+    fontFamily:'Inter_600SemiBold',
+    height: 50,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    backgroundColor:'#fff',
+    borderColor:'gray',
+    borderWidth: 1.5,
+    borderRadius: 5,
+  },
+})
 const styles = StyleSheet.create({
+  
   text:{
     fontSize:17,
     fontFamily: 'Inter_600SemiBold'

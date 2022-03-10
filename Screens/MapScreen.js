@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,SafeAreaView,Platform,StatusBar } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView,Platform,StatusBar,ScrollView,KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import Map from '../Components/Map'
 import MapView from 'react-native-maps';
@@ -15,21 +15,23 @@ const MapScreen = () => {
     // <Text>MapScreen</Text>
     // </View>
     // </SafeAreaView>
-    <View style={{height:'100%',}}>
-    <View style={{height:'50%'}}>
+    <KeyboardAvoidingView 
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={{flex:1}}>
+    <View style={{height:'50%',zIndex:0}}>
       <Map/>
     </View>
-    <View style={{height:'50%'}}>
+    <View style={{height:'50%',zIndex:1}}>
       <Stack.Navigator>
       <Stack.Screen
-      name={NavCard}
+      name="NavigateCard"
       component={NavCard}
       options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-      name={RideOps}
+      name="RideOptions"
       component={RideOps}
       options={{
           headerShown: false,
@@ -38,11 +40,12 @@ const MapScreen = () => {
       </Stack.Navigator>
     </View>
 
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
 export default MapScreen
+
 
 const styles = StyleSheet.create({
 //   container: {

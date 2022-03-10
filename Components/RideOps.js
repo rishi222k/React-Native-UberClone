@@ -6,10 +6,13 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import tw from 'twrnc';
+import { useSelector } from 'react-redux';
+import { setTravelTimeInformation,selectTravelTimeInformation } from '../slices/navSlice';
 
 const RideOps = () => {
   const navigation= useNavigation();
   const [selected,setSelected] = useState(null);
+  const travelTimeInformation =useSelector(selectTravelTimeInformation);
 
   const data =[
     {
@@ -47,7 +50,7 @@ const RideOps = () => {
       />
       </TouchableOpacity>
       <Text style={{textAlign:"center",fontSize:20,fontFamily:'Inter_600SemiBold',paddingVertical:20}}>
-      Select a Ride</Text>
+      Select a Ride - {travelTimeInformation?.distance.text}</Text>
     </View>
     <FlatList 
       data={data}
@@ -62,12 +65,13 @@ const RideOps = () => {
           />
           <View>
           <Text style={{fontSize:20,fontFamily:'Inter_600SemiBold'}}>{title}</Text>
-          <Text>Travel Time...</Text>
+          <Text style={{marginTop:4}}>{travelTimeInformation?.duration.text} travel time</Text>
           </View>
           <Text style={{fontSize:20,fontFamily:'Inter_500Medium'}}>$99</Text>
         </TouchableOpacity>
       )}
     />
+
     <View>
       <TouchableOpacity 
       disabled={!selected}
@@ -87,8 +91,9 @@ export default RideOps
 
 const styles = StyleSheet.create({
   choose:{
+    marginTop:15,
   paddingHorizontal:25,
   paddingVertical:15,
-   borderRadius:10
+  borderRadius:10
   },
 })

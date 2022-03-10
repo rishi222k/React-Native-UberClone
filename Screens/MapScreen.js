@@ -18,10 +18,10 @@ const MapScreen = () => {
     <KeyboardAvoidingView 
     behavior={Platform.OS === "ios" ? "padding" : "height"}
     style={{flex:1}}>
-    <View style={{height:'50%',zIndex:0}}>
+    <View style={{height:'45%',zIndex:0}}>
       <Map/>
     </View>
-    <View style={{height:'50%',zIndex:1}}>
+    <View style={{height:'55%',zIndex:1}}>
       <Stack.Navigator>
       <Stack.Screen
       name="NavigateCard"

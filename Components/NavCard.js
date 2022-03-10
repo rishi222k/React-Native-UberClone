@@ -41,7 +41,7 @@ const NavCard = () => {
       }}
     />
     <NavFavs/>
-    <View style={{flexDirection:'row',width:"100%",justifyContent:'space-around'}}>
+    <View style={{flexDirection:'row',width:"100%",justifyContent:'space-around',marginTop:20}}>
       {/* Uber-Rides */}
       <TouchableOpacity style={{flexDirection:'row',alignItems:'center',justifyContent:'center',backgroundColor:'black',width:150, borderRadius:80}}
       onPress={()=> navigation.navigate("RideOptions")}>

@@ -8,6 +8,8 @@ import { FlatList } from 'react-native-gesture-handler';
 import tw from 'twrnc';
 import { useSelector } from 'react-redux';
 import { setTravelTimeInformation,selectTravelTimeInformation } from '../slices/navSlice';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 const   SURGE_CHARGE_RATE=1.5;
 
@@ -52,7 +54,7 @@ const RideOps = () => {
       />
       </TouchableOpacity>
       <Text style={{textAlign:"center",fontSize:20,fontFamily:'Inter_600SemiBold',paddingVertical:20}}>
-      Select a Ride - {travelTimeInformation?.distance.text}</Text>
+      Select a Ride - {travelTimeInformation?.distance?.text}</Text>
     </View>
     <FlatList 
       data={data}
@@ -67,7 +69,7 @@ const RideOps = () => {
           />
           <View>
           <Text style={{fontSize:20,fontFamily:'Inter_600SemiBold'}}>{title}</Text>
-          <Text style={{marginTop:4}}>{travelTimeInformation?.duration.text} travel time</Text>
+          <Text style={{marginTop:4}}>{travelTimeInformation?.duration?.text} travel time</Text>
           </View>
           <Text style={{fontSize:20,fontFamily:'Inter_500Medium'}}>
 

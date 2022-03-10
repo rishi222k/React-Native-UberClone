@@ -9,6 +9,8 @@ import tw from 'twrnc';
 import { useSelector } from 'react-redux';
 import { setTravelTimeInformation,selectTravelTimeInformation } from '../slices/navSlice';
 
+const   SURGE_CHARGE_RATE=1.5;
+
 const RideOps = () => {
   const navigation= useNavigation();
   const [selected,setSelected] = useState(null);
@@ -67,7 +69,16 @@ const RideOps = () => {
           <Text style={{fontSize:20,fontFamily:'Inter_600SemiBold'}}>{title}</Text>
           <Text style={{marginTop:4}}>{travelTimeInformation?.duration.text} travel time</Text>
           </View>
-          <Text style={{fontSize:20,fontFamily:'Inter_500Medium'}}>$99</Text>
+          <Text style={{fontSize:20,fontFamily:'Inter_500Medium'}}>
+
+            {new Intl.NumberFormat('en-IN',{
+              style:'currency',
+              currency:'INR'
+            }).format(
+              (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier*7)/100
+            )}
+
+          </Text>
         </TouchableOpacity>
       )}
     />
@@ -77,7 +88,7 @@ const RideOps = () => {
       disabled={!selected}
       style={[styles.choose,selected? {backgroundColor:"black"}:{backgroundColor:"#CACACA"}]}>
         <Text style={{textAlign:'center',color:'white',fontSize:20}}>
-          Choose {selected?.title}
+          Confirm  {selected?.title}
         </Text>
       </TouchableOpacity>
     </View>
